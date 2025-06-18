@@ -51,10 +51,28 @@
         </field>
     </record>
 
+    <!-- عرض هرمي مخصص لمجلدات الأرشيف -->
+    <record id="view_archive_folder_hierarchy" model="ir.ui.view">
+        <field name="name">archive.folder.hierarchy</field>
+        <field name="model">archive.folder</field>
+        <field name="arch" type="xml">
+            <hierarchy string="التسلسل الهرمي لمجلدات الأرشيف">
+                <field name="name"/>
+                <field name="parent_id" invisible="1"/> <!-- ضروري للهرمية -->
+                <field name="type"/>
+                <field name="document_count" widget="badge"/>
+            </hierarchy>
+        </field>
+    </record>
+
+    <!-- عرض هرمي مخصص لمجلدات الأرشيف -->
+    
+
     <!-- إجراءات الأرشيف -->
     <record id="action_archive_folder" model="ir.actions.act_window">
         <field name="name">مجلدات الأرشيف</field>
         <field name="res_model">archive.folder</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,hierarchy</field>
+        <field name="view_id" ref="view_archive_folder_hierarchy"/>
     </record>
 </odoo>
