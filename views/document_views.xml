@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- إجراء عرض الوثائق مع التصحيح -->
+    <record id="action_archive_document" model="ir.actions.act_window">
+        <field name="name">الوثائق الأرشيفية</field>
+        <field name="res_model">archive.document</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+
+    <!-- إجراء إنشاء وثيقة جديدة -->
+    <record id="action_archive_document_new" model="ir.actions.act_window">
+        <field name="name">وثيقة أرشيفية جديدة</field>
+        <field name="res_model">archive.document</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        
+    </record>
+
+    <!-- تعديل عرض الشجرة لإظهار زر الإضافة -->
+    <record id="view_archive_document_tree" model="ir.ui.view">
+        <field name="name">archive.document.tree</field>
+        <field name="model">archive.document</field>
+        <field name="arch" type="xml">
+            <tree string="الوثائق الأرشيفية">
+                <header>
+                    <button name="%(action_archive_document_new)d" 
+                            type="action"
+                            string="إضافة وثيقة"
+                            class="oe_highlight"/>
+                </header>
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="folder_id" widget="many2one_clickable"/>
+                <field name="date"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

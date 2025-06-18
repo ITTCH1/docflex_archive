@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- القائمة الرئيسية -->
+    <menuitem id="menu_archive_root" name="الأرشيف" sequence="50"/>
+
+    <!-- قائمة الإدارة -->
+    <menuitem id="menu_archive_management" name="إدارة الأرشيف" parent="menu_archive_root" sequence="10"/>
+        <menuitem id="menu_archive_folders" name="مجلدات الأرشيف" parent="menu_archive_management" action="action_archive_folder" sequence="10"/>
+        <menuitem id="menu_archive_documents" name="الوثائق الأرشيفية" parent="menu_archive_management" action="action_archive_document" sequence="20"/>
+
+    <!-- قائمة التقارير -->
+    <!-- <menuitem id="menu_archive_reports" name="تقارير الأرشيف" parent="menu_archive_root" sequence="20"/>
+        <menuitem id="menu_report_archive_stats" name="إحصائيات الأرشيف" parent="menu_archive_reports" action="action_archive_stats" sequence="10"/> -->
+
+    <!-- قائمة الإعدادات -->
+    <menuitem id="menu_archive_config" name="إعدادات الأرشيف" parent="menu_archive_root" sequence="30" groups="group_archive_manager"/>
+</odoo>

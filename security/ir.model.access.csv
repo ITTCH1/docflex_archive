@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_archive_folder_manager,archive.folder.manager,model_archive_folder,group_archive_manager,1,1,1,1
+access_archive_folder_user,archive.folder.user,model_archive_folder,group_archive_user,1,0,0,0
+access_archive_document_manager,archive.document.manager,model_archive_document,group_archive_manager,1,1,1,1
+access_archive_document_user,archive.document.user,model_archive_document,group_archive_user,1,1,1,0
+

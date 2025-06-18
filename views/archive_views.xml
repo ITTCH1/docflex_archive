@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- عرض شجرة مجلدات الأرشيف -->
+    <record id="view_archive_folder_tree" model="ir.ui.view">
+        <field name="name">archive.folder.tree</field>
+        <field name="model">archive.folder</field>
+        <field name="arch" type="xml">
+            <tree string="مجلدات الأرشيف">
+                <field name="sequence" widget="handle"/>
+                <field name="complete_name"/>
+                <field name="type"/>
+                <field name="document_count" widget="badge"/>
+                <field name="barcode"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- عرض تفاصيل المجلد -->
+    <record id="view_archive_folder_form" model="ir.ui.view">
+        <field name="name">archive.folder.form</field>
+        <field name="model">archive.folder</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="active" widget="boolean_button"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id" options="{'no_open': True}"/>
+                        <field name="complete_name" readonly="1"/>
+                        <field name="type"/>
+                    </group>
+                    <notebook>
+                        <page string="الوصف">
+                            <field name="description"/>
+                        </page>
+                        <page string="الوثائق" invisible="not document_ids">
+                            <field name="document_ids" mode="tree,form">
+                                <tree>
+                                    <field name="reference"/>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="state" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- إجراءات الأرشيف -->
+    <record id="action_archive_folder" model="ir.actions.act_window">
+        <field name="name">مجلدات الأرشيف</field>
+        <field name="res_model">archive.folder</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
